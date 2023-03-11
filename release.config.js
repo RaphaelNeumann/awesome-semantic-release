@@ -1,13 +1,24 @@
 const plugins = require("./plugins");
-const customTransform = require("./commit-transform");
+const { execSync } = require('child_process');
 
+
+ function getLocalRepoUrl() {
+    const topLevelDir = execSync('git rev-parse --show-toplevel')
+      .toString()
+      .trim();
+  
+    return `file://${topLevelDir}/.git`;
+  }
+  
+  function getCurrentBranch() {
+    return execSync('git rev-parse --abbrev-ref HEAD')
+      .toString()
+      .trim();
+  }
 
 module.exports = {
+	repositoryUrl: getLocalRepoUrl(),
+  branches: getCurrentBranch(),
 	releaseRules: plugins[0][1].releaseRules,
-	parserOpts: {
-		mergePattern: /^Merge pull request #(\d+) from (.*)$/,
-		mergeCorrespondence: ["id", "source"]
-	},
-	writerOpts: { transform: customTransform },
 	plugins
 };

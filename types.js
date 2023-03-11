@@ -1,123 +1,94 @@
+types = [
+        {
+            type: 'feat',
+            title: 'Features',
+            emoji: ':sparkles:',
+            changelog: true,
+            aliases: ['feature']
+        },
+        {
+            type: 'fix',
+            title: 'Bug Fixes',
+            emoji: ':bug:',
+            changelog: true,
+        },
+        {
+            type: 'docs',
+            title: 'Documentation',
+            emoji: ':books:',
+            changelog: true,
+        },
+        {
+            type: 'style',
+            title: 'Styles',
+            emoji: ':gem:',
+            changelog: true,
+        },
+        {
+            type: 'refactor',
+            title: 'Code Refactoring',
+            emoji: ':package:',
+            changelog: true,
+        },
+        {
+            type: 'perf',
+            title: 'Performance Improvements',
+            emoji: ':rocket:',
+            changelog: true,
+        },
+        {
+            type: 'test',
+            title: 'Tests',
+            emoji: ':rotating_light:',
+            changelog: true,
+        },
+        {
+            type: 'build',
+            title: 'Builds',
+            emoji: ':hammer_and_wrench:',
+            changelog: true,
+        },
+        {
+            type: 'ci',
+            title: 'Continuous Integrations',
+            emoji: ':robot:',
+            changelog: true,
+        },
+        {
+            type: 'chore',
+            title: 'Chores',
+            emoji: ':recycle:',
+            changelog: true,
+        },
+        {
+            type: 'revert',
+            title: 'Reverts',
+            emoji: ':wastebasket:',
+            changelog: true,
+        }
+    ];
+function parsePresetConfig() {
+    presetConfig = [];
+    types.forEach((item) => {
+        if (item.changelog) {
+            presetConfig.push({
+                "type": item.type,
+                "section": `${item.emoji} ${item.title}`,
+				"hidden": false
+            });
+			if (Array.isArray(item.aliases) && item.aliases.length > 0) {
+				item.aliases.forEach((aliase) => {
+					presetConfig.push({
+						"type": aliase,
+						"section": `${item.emoji} ${item.title}`,
+					});
+				});
+			};
+        }
+    })
+    return presetConfig;
+}
+
 module.exports = {
-	maxSubjectLength: 72,
-	bodyLineLength: 100,
-	typesOrder: [
-		'feat',
-		'fix',
-		'perf',
-		'build',
-		'refactor',
-		'docs',
-		'test',
-		'ci',
-		'chore',
-		'style',
-		'revert',
-		'initial',
-		'dependencies',
-		'peerDependencies',
-		'devDependencies',
-		'metadata',
-	],
-	types: {
-		feat: {
-			description: 'A new feature',
-			title: 'Features',
-			emoji: '✨',
-			changelog: true,
-			release: 'minor',
-			aliases: {initial: {description: 'Initial commit', title: 'Initial', emoji: '🎉'}},
-		},
-		fix: {
-			description: 'A bug fix',
-			title: 'Bug Fixes',
-			emoji: '🐛',
-			changelog: true,
-			release: 'patch',
-			aliases: {
-				dependencies: {description: 'Update dependency', title: 'Dependencies', emoji: '⬆️', scope: 'package'},
-				peerDependencies: {
-					description: 'Update peer dependency',
-					title: 'Peer dependencies',
-					emoji: '⬆️',
-					scope: 'package',
-				},
-				metadata: {description: 'Update metadata (package.json)', title: 'Metadata', emoji: '📦', scope: 'package'},
-			},
-		},
-		docs: {
-			description: 'Documentation only changes',
-			title: 'Documentation',
-			emoji: '📚',
-			changelog: true,
-			release: {scope: 'readme', release: 'patch'},
-		},
-		style: {
-			description:
-				'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
-			title: 'Styles',
-			emoji: '💎',
-			changelog: true,
-			release: false,
-		},
-		refactor: {
-			description: 'A code change that neither fixes a bug nor adds a feature',
-			title: 'Code Refactoring',
-			emoji: '📦',
-			changelog: true,
-			release: false,
-		},
-		perf: {
-			description: 'A code change that improves performance',
-			title: 'Performance Improvements',
-			emoji: '🚀',
-			changelog: true,
-			release: 'patch',
-		},
-		test: {
-			description: 'Adding missing tests or correcting existing tests',
-			title: 'Tests',
-			emoji: '🚨',
-			changelog: true,
-			release: false,
-		},
-		build: {
-			description:
-				'Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
-			title: 'Builds',
-			emoji: '🛠',
-			changelog: true,
-			release: 'patch',
-		},
-		ci: {
-			description:
-				'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
-			title: 'Continuous Integrations',
-			emoji: '⚙️',
-			changelog: true,
-			release: false,
-		},
-		chore: {
-			description: "Other changes that don't modify src or test files",
-			title: 'Chores',
-			emoji: '♻️',
-			changelog: true,
-			release: false,
-			aliases: {
-				devDependencies: {
-					description: 'Update dev dependencies',
-					title: 'Dev dependencies',
-					emoji: '⬆️',
-					scope: 'package',
-				},
-			},
-		},
-		revert: {
-			description: 'Reverts a previous commit',
-			title: 'Reverts',
-			emoji: '🗑',
-			changelog: true,
-			release: false,
-		},
-	},
-};
+    presetConfig: parsePresetConfig()
+ }
