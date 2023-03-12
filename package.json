@@ -1,23 +1,18 @@
 {
-  "author": "Oleg Koval <kvl.olg@gmail.com>",
+  "author": "Raphael Neumann <raphael@rneumann.me>",
   "dependencies": {
-    "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/commit-analyzer": "^9.0.1",
-    "@semantic-release/git": "^10.0.0",
-    "@semantic-release/github": "^8.0.1",
-    "@semantic-release/npm": "^8.0.0",
     "@semantic-release/release-notes-generator": "^10.0.2",
     "child_process": "^1.0.2",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "semantic-release": ">=18.0.0",
     "snyk": "^1.1117.0"
   },
-  "description": "Sharable configuration for semantic-release, extends experience for publishing to NPM & Github: generates release-notes, changelog, publishes new version with Github actions.",
+  "description": "Sharable configuration for semantic-release, extends experience for generates release-notes",
   "files": [
     "types.js",
-    "commit-transform.js",
     "release.config.js",
-    "plugins.json"
+    "plugins.js"
   ],
   "keywords": [
     "changelog",
@@ -37,7 +32,7 @@
   ],
   "license": "MIT",
   "main": "release.config.js",
-  "name": "semantic-release-npm-github-publish",
+  "name": "@raphaelneumann/awesome-semantic-release",
   "peerDependencies": {
     "semantic-release": ">=18.0.0"
   },
@@ -46,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/oleg-koval/semantic-release-npm-github-publish.git"
+    "url": "https://github.com/RaphaelNeumann/awesome-semantic-release.git"
   },
   "scripts": {
     "semantic-release": "semantic-release",
