@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Semantic Release
-        uses: RaphaelNeumann/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v3
         id: semantic
         env:
           CI: true
@@ -20,6 +20,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
+          branches: |
+            [
+              'main'
+            ]
           extra_plugins: |
             @semantic-release/npm
             @semantic-release/github
