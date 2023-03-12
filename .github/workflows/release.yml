@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   publish:
@@ -11,16 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - env:
-          CI: true
-        run: npm ci
-      - if: success()
+      - name: Semantic Release
+        uses: RaphaelNeumann/semantic-release-action@v3
+        id: semantic
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        with:
+          extra_plugins: |
+            @semantic-release/npm
+            @semantic-release/github
