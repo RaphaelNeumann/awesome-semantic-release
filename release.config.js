@@ -22,10 +22,3 @@ if ( process.argv.includes('--dry-run') ) {
 }
 
 module.exports = releaseConfig
-
-//module.exports = {
-//	
-//  branches: getCurrentBranch(),
-//	releaseRules: plugins[0][1].releaseRules,
-//	plugins
-//};
