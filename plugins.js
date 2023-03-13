@@ -17,5 +17,6 @@ module.exports =
 				"types": types.presetConfig
 			}
 		}
-	]
+	],
+	"@semantic-release/changelog"
 ]
