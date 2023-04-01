@@ -7,6 +7,7 @@
     "child_process": "^1.0.2",
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "semantic-release": "^19",
+    "semantic-release-major-tag": "^0.3.0",
     "snyk": "^1.1117.0"
   },
   "description": "Sharable configuration for semantic-release, extends experience for generates release-notes",
